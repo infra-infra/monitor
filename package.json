@@ -1,0 +1,20 @@
+{
+  "name": "@oc/monitor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/main.js",
+  "module": "lib/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "files": [
+    "lib"
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.8.4"
+  }
+}
