@@ -5,9 +5,13 @@ class Tracker {
         this.url = 'https://www.google-analytics.com/collect';
     }
     send(json:any){
-        new Image().src = `https://log.zzfzzf.com/zzf.gif?body=${window.btoa(
-            JSON.stringify(json),
-        )}&index=log-performance`
+        try {
+            new Image().src = `https://log.zzfzzf.com/zzf.gif?body=${window.btoa(
+                JSON.stringify(json),
+            )}&index=log`;
+        } catch (e) {
+            console.log('error: ',json)
+        }
     }
 }
 

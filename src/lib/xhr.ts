@@ -1,3 +1,6 @@
+import Tracker from "../util/tracker";
+
+const tracker = new Tracker()
 export function injectXHR() {
     let XMLHttpRequest: any = window.XMLHttpRequest;
     let oldOpen = XMLHttpRequest.prototype.open;
@@ -17,6 +20,16 @@ export function injectXHR() {
                 let duration = Date.now() - startTime;
                 let status = this.status;
                 let statusText = this.statusText;
+                tracker.send({
+                    kind: "stability",
+                    type: "xhr",
+                    eventType: type,
+                    pathname: this.logData.url,
+                    status: status + "-" + statusText, // 状态码
+                    duration,
+                    response: this.response ? JSON.stringify(this.response) : "", // 响应体
+                    params: body || "", // 入参
+                })
                 console.log({
                     kind: "stability",
                     type: "xhr",
